@@ -25,10 +25,10 @@ int ToParseHundreds(int numToParseHundreds) // функция получения
 
 int afterCheckNum = CorrectIfNegative(num); // результат корректировки, если число на входе отрицательное
 
-if (afterCheckNum < 100) Console.WriteLine($"{num} -> третьей цифры нет");  // если число не 3-х значное выводим msg "нет третьей цифры"
-else    // если число 3-х значное и больше отправляем его в метод получения 3-х значного числа и вычисляем 3-ю цифру
+if (afterCheckNum > 99)  // если число 3-х значное и больше отправляем его в метод получения 3-х значного числа и вычисляем 3-ю цифру
 {
     int hundredsNumber = ToParseHundreds(afterCheckNum);    // получаем 3-х значное число
     int ost = hundredsNumber % 10;                          // находим 3-ю цифру
     Console.WriteLine($"{orig_num} -> {ost}");              // вывод первоначального числа и 3-й цифры
 }
+else Console.WriteLine($"{num} -> третьей цифры нет");      // если число не 3-х значное выводим msg "нет третьей цифры"
