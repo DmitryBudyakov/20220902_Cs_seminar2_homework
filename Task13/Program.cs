@@ -11,17 +11,24 @@ int orig_num = num;
 
 int CorrectIfNegative(int number)   // для изменения знака отр. числа на положительное
 {
-    return number < 0 ? -number : number;   // если number < 0 метод возвращает -number(т.е. положительное), иначе - ничего не делает
+    return number < 0 ? -number : number;   // если number < 0 метод возвращает -number(т.е. положительное), иначе - число без изменений
 }
-int afterCheckNum = CorrectIfNegative(num);
 
-if (afterCheckNum < 100) Console.WriteLine($"{num} -> третьей цифры нет");
-else
+int ToParseHundreds(int numToParseHundreds) // функция получения 3-х значного числа
 {
-    while (afterCheckNum > 99 && afterCheckNum > 999)
+    while (numToParseHundreds > 999) // цикл выполняется, если число > 3-х значного, если сразу 3-х эначное - минует цикл
     {
-        afterCheckNum /= 10;
+        numToParseHundreds /= 10;   //циклическим делением на 10 получаем 3-х значное число
     }
-    int ost = afterCheckNum % 10;
-    Console.WriteLine($"{orig_num} -> {ost}");
+    return numToParseHundreds;
+}
+
+int afterCheckNum = CorrectIfNegative(num); // результат корректировки, если число на входе отрицательное
+
+if (afterCheckNum < 100) Console.WriteLine($"{num} -> третьей цифры нет");  // если число не 3-х значное выводим msg "нет третьей цифры"
+else    // если число 3-х значное и больше отправляем его в метод получения 3-х значного числа и вычисляем 3-ю цифру
+{
+    int hundredsNumber = ToParseHundreds(afterCheckNum);    // получаем 3-х значное число
+    int ost = hundredsNumber % 10;                          // находим 3-ю цифру
+    Console.WriteLine($"{orig_num} -> {ost}");              // вывод первоначального числа и 3-й цифры
 }
