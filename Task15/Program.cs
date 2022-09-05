@@ -8,16 +8,16 @@ Console.Clear();
 Console.Write("Введите цифру дня недели [1...7]: ");
 int num = Convert.ToInt32(Console.ReadLine());
 
-bool IsWeekEnd(int dayOfWeek)
+bool IsWeekEnd(int dayOfWeek)   // функция проверяет является ли день выходным(true) или нет(false)
 {
     if (dayOfWeek == 6 || dayOfWeek == 7) return true;
     else return false;
 }
 
-if (num > 0 && num < 8)
+if (num > 0 && num < 8)     // проверяем введенное число в диапазоне [1...7] или нет
 {
-    bool result = IsWeekEnd(num);
-    if(result) Console.WriteLine($"{num} -> да, это выходной");
-    else Console.WriteLine($"{num} -> нет, это не выходной");
+    bool result = IsWeekEnd(num);   // результат проверки введенный день выходной или нет
+    if(result) Console.WriteLine($"{num} -> да, это выходной"); // вывод, если выходной
+    else Console.WriteLine($"{num} -> нет, это не выходной");   // вывод, если не выходной
 }
-else Console.WriteLine("Ошибка ввода. Введите число в диапазоне [1...7].");
+else Console.WriteLine("Ошибка ввода. Введите число в диапазоне [1...7]."); // сообщение об ошибке, если число вне диапазона [1...7]
